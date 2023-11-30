@@ -1,11 +1,13 @@
 /**
- * * This function return a three digits number.
- */ export function formatToThree(num: number): string {
+ * * This function coverts single digit into a three digits number.
+ */
+
+export function formatToThree(num: number): string {
   let toFormat = num.toString();
 
   while (toFormat.length < 3) {
-    toFormat = '0' + toFormat  ;
+    toFormat = "0" + toFormat;
   }
 
-  return (toFormat);
+  return toFormat;
 }
