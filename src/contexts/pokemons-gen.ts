@@ -10,7 +10,7 @@ type ContextType = {
 };
 
 export const pokemonGeneration = create<ContextType>((set) => ({
-  selectedGeneration: GenerationList[0],
+  selectedGeneration: GenerationList[2],
   setSelectedGeneration: (generation: GenerationType) =>
     set({ selectedGeneration: generation }),
 }));
