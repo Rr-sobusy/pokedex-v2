@@ -4,6 +4,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { GenerationType } from "@/interfaces/PokemonGenerationType";
+import { PokemonType } from "@/interfaces/PokemonType";
 
 export const usePokemon = ({ generation }: { generation: GenerationType }) => {
   const { data: PokemonDatas, isLoading } = useQuery({
@@ -17,7 +18,7 @@ export const usePokemon = ({ generation }: { generation: GenerationType }) => {
       ).then((res) => res.json());
 
       //TODO: Fetch pokemon stats per generation by iterating API url of each pokemon fetched earlier
-      const pokemonLists = pokemonDatas?.results.map(
+      const pokemonLists = pokemonDatas.results.map(
         async (pokemon: { url: string }) => {
           const pokemonPromise = await fetch(pokemon.url);
           return pokemonPromise.json();
@@ -27,8 +28,13 @@ export const usePokemon = ({ generation }: { generation: GenerationType }) => {
     },
     refetchOnWindowFocus: false,
   });
-  return {
-    PokemonDatas,
-    isLoading,
-  };
+  const adjustedObject: PokemonType[] | null =
+    PokemonDatas?.map(({ id, species, types }) => {
+      return {
+        pokemonId: id,
+        pokemonName: species.name,
+        type: types.map(({ type :{name}}: { type: {name:string}}) => name),
+      };
+    }) || null;
+  return [adjustedObject, isLoading] as [PokemonType[], boolean];
 };

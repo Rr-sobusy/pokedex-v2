@@ -4,20 +4,21 @@ import Image from "next/image";
 import { formatToThree } from "@/helpers/format-to-three";
 import { PokemonType } from "@/interfaces/PokemonType";
 
-type Props = {
-  
-};
-
 const imgSrc =
   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork";
 
-const PokeCard = ({ pokemonId,pokemonName,types }: PokemonType) => {
+const PokeCard = ({ pokemonId, pokemonName, type }: PokemonType) => {
+  console.log(type);
   return (
     <Card
       isFooterBlurred
       className="max-h-[270px] hover:-translate-y-2 cursor-pointer"
     >
-      <CardBody className="flex flex-col items-center gap-1 overflow-visible bg-slate-200">
+      <CardBody
+        className={`flex flex-col items-center gap-1 overflow-visible ${type.join(
+          " "
+        )}`}
+      >
         <Image
           alt=""
           width={150}
