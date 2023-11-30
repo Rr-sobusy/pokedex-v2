@@ -10,6 +10,7 @@ import { PokemonType } from "@/interfaces/PokemonType";
 import { pokemonGeneration } from "@/contexts/pokemons-gen";
 
 export const usePokemon = () => {
+
   const { selectedGeneration: generation } = pokemonGeneration();
 
   const { data: PokemonDatas, isLoading } = useQuery({
@@ -44,4 +45,5 @@ export const usePokemon = () => {
       };
     }) || null;
   return [adjustedObject, isLoading] as [PokemonType[], boolean];
+
 };

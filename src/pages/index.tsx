@@ -15,7 +15,7 @@ export default function Home() {
   const [pokemon, isLoading] = usePokemon();
 
 useEffect(()=>{
-    console.log(pokemon)
+    console.log("changes")
 },[pokemon])
 
   console.log(selectedGeneration)
