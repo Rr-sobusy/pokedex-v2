@@ -1,9 +1,25 @@
 import React from "react";
 import Image from "next/image";
 
+//* next-ui component library
+import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/popover";
+
+//* constants and types
+import { GenerationList } from "@/helpers/generations";
+import { GenerationType } from "@/interfaces/PokemonGenerationType";
+
+//* context
+import { pokemonGeneration } from "@/contexts/pokemons-gen";
+
 type Props = {};
 
 const Header = (props: Props) => {
+  const { setSelectedGeneration } = pokemonGeneration();
+
+  //
+  function selectGenerationHandler(generation: GenerationType) {
+    setSelectedGeneration(generation);
+  }
   return (
     <header className="w-full flex flex-col items-center text-slate-700 py-[3rem] px-[1rem] md:px-[2rem]">
       <h4 className="flex items-end justify-center font-sans text-5xl font-bold tracking-wide">
@@ -38,9 +54,29 @@ const Header = (props: Props) => {
               type="text"
             />
           </div>
-          <button className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700">
-            <Image src="/filter.png" width={22} height={22} alt="" />
-          </button>
+          <Popover placement="bottom">
+            <PopoverTrigger>
+              <button className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700">
+                <Image src="/filter.png" width={22} height={22} alt="" />
+              </button>
+            </PopoverTrigger>
+            <PopoverContent>
+              <div className="px-7 py-3 bg-[var(--bg-main)] rounded-lg">
+                <h1 className="text-small font-bold mb-3">Select Generation</h1>
+                <ul className="grid grid-cols-3 gap-2">
+                  {GenerationList.map((generation) => (
+                    <li
+                      onClick={() => selectGenerationHandler(generation)}
+                      className="text-lg flex justify-center px-1 py-1 items-center rounded-lg font-slate-500 font-sans font-semibold cursor-pointer hover:bg-slate-200"
+                      key={generation.generation}
+                    >
+                      {generation.generation}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </PopoverContent>
+          </Popover>
         </div>
       </div>
     </header>

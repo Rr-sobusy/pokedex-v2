@@ -8,7 +8,6 @@ const imgSrc =
   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork";
 
 const PokeCard = ({ pokemonId, pokemonName, type }: PokemonType) => {
-  console.log(type);
   return (
     <Card
       isFooterBlurred
@@ -27,7 +26,7 @@ const PokeCard = ({ pokemonId, pokemonName, type }: PokemonType) => {
           src={`${imgSrc}/${pokemonId}.png`}
         />
 
-        <h5 className="font-sans capitalize text-xl font-semibold tracking-wide text-center text-slate-600">
+        <h5 className="font-sans capitalize text-xl font-semibold tracking-wide text-center text-slate-700">
           {pokemonName}
         </h5>
 

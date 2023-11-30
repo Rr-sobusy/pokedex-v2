@@ -6,7 +6,12 @@ import { useQuery } from "@tanstack/react-query";
 import { GenerationType } from "@/interfaces/PokemonGenerationType";
 import { PokemonType } from "@/interfaces/PokemonType";
 
-export const usePokemon = ({ generation }: { generation: GenerationType }) => {
+//* context
+import { pokemonGeneration } from "@/contexts/pokemons-gen";
+
+export const usePokemon = () => {
+  const { selectedGeneration: generation } = pokemonGeneration();
+
   const { data: PokemonDatas, isLoading } = useQuery({
     queryKey: ["pokemonDatas"],
     queryFn: async () => {
@@ -33,7 +38,9 @@ export const usePokemon = ({ generation }: { generation: GenerationType }) => {
       return {
         pokemonId: id,
         pokemonName: species.name,
-        type: types.map(({ type :{name}}: { type: {name:string}}) => name),
+        type: types.map(
+          ({ type: { name } }: { type: { name: string } }) => name
+        ),
       };
     }) || null;
   return [adjustedObject, isLoading] as [PokemonType[], boolean];
