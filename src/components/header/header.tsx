@@ -36,7 +36,7 @@ const Header = (props: Props) => {
 
       <div className="w-full md:max-w-[450px] mt-[3rem] flex flex-col gap-3">
         <p className="font-sans text-sm font-semibold text-slate-500">
-          Search for a pokemon by name or id or use by using filters.
+          Search for a pokemon in it's generation by name or by using filters.
         </p>
         <div className="flex gap-3">
           {/* Input w/ icon */}
@@ -49,7 +49,7 @@ const Header = (props: Props) => {
               alt=""
             />
             <input
-              placeholder="Name or number"
+              placeholder="Ex. Pi"
               className="w-full py-3 pl-1 pr-3 font-sans text-sm bg-transparent outline-none text-slate-500"
               type="text"
             />

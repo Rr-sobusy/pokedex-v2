@@ -9,6 +9,7 @@ const config: Config = {
     // nextui
 
     "./node_modules/@nextui-org/theme/dist/components/card.js",
+    "./node_modules/@nextui-org/theme/dist/components/popover.js",
   ],
   theme: {
     extend: {
