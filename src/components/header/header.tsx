@@ -10,11 +10,14 @@ import { GenerationType } from "@/interfaces/PokemonGenerationType";
 
 //* context
 import { pokemonGeneration } from "@/contexts/pokemons-gen";
+import { searchPokemon } from "@/contexts/pokemon-search";
 
 type Props = {};
 
 const Header = (props: Props) => {
+  //* contexts
   const { setSelectedGeneration } = pokemonGeneration();
+  const { setPokemonName } = searchPokemon();
 
   //
   function selectGenerationHandler(generation: GenerationType) {
@@ -49,7 +52,8 @@ const Header = (props: Props) => {
               alt=""
             />
             <input
-              placeholder="Ex. Pi"
+              onChange={(e) => setPokemonName(e.target.value)}
+              placeholder="Ex. Pikachu"
               className="w-full py-3 pl-1 pr-3 font-sans text-sm bg-transparent outline-none text-slate-500"
               type="text"
             />
