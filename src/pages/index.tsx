@@ -4,7 +4,7 @@ import PokeCard from "@/components/pokemon-card/card";
 import { usePokemon } from "@/hooks/usePokemon";
 import { pokemonGeneration } from "@/contexts/pokemons-gen";
 import { searchPokemon } from "@/contexts/pokemon-search";
-import Image from "next/image";
+import Loader from "@/components/loader/loader";
 
 export default function Home() {
   //* context
@@ -26,18 +26,7 @@ export default function Home() {
       </Head>
       <Header />
       {isLoading ? (
-        <main className="w-full h-screen flex flex-col items-center">
-          <Image
-            className="mt-10 animate-ping"
-            alt=""
-            width={75}
-            height={75}
-            src="/pokeball_large.png"
-          />
-          <p className="text-slate-600 tracking-wider font-sans text-lg font-semibold mt-10">
-            Fetching Pokemons . . .
-          </p>
-        </main>
+        <Loader />
       ) : (
         <main className="lg:max-w-[1200px] py-10 max-w-full px-[2rem] lg:mx-auto min-h-screen grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4">
           {filterSearchedPokemon?.map((pokemon) => (

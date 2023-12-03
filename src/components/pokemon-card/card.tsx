@@ -26,7 +26,7 @@ const PokeCard = ({ pokemonId, pokemonName, type }: PokemonType) => {
           src={`${imgSrc}/${pokemonId}.png`}
         />
 
-        <h5 className="font-sans capitalize text-xl font-semibold tracking-wide text-center text-slate-700">
+        <h5 className="font-sans capitalize text-xl font-bold tracking-wider text-center text-slate-600">
           {pokemonName}
         </h5>
 
