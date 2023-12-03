@@ -37,7 +37,7 @@ body {
 }
 
 .bug {
-    @apply bg-gradient-to-t from-gray-300 to-gray-50
+    @apply bg-gradient-to-t from-gray-400 to-gray-50
 }
 
 .normal {
@@ -50,6 +50,10 @@ body {
 
 .electric {
     @apply bg-gradient-to-t from-yellow-300 to-yellow-50
+}
+
+.dark {
+    @apply bg-gradient-to-t from-gray-400 to-gray-50
 }
 
 .fairy {
@@ -73,9 +77,21 @@ body {
 }
 
 .flying {
-    @apply bg-gradient-to-t from-slate-300 to-slate-50
+    @apply bg-gradient-to-t from-gray-400 to-gray-50
+}
+
+.rock {
+    @apply bg-gradient-to-t from-gray-400 to-gray-50
 }
 
 .dragon {
     @apply bg-gradient-to-t from-orange-300 to-orange-50
+}
+
+.ghost {
+    @apply bg-gradient-to-t from-red-300 to-red-50
+}
+
+.steel {
+    @apply bg-gradient-to-t from-cyan-300 to-cyan-50
 }
