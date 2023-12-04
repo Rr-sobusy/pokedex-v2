@@ -28,7 +28,7 @@ body {
     @apply bg-gradient-to-t from-green-300 to-green-50
 }
 
-.fire {
+.fire, .flying {
     @apply bg-gradient-to-t from-orange-300 to-orange-50
 }
 
@@ -37,7 +37,7 @@ body {
 }
 
 .bug {
-    @apply bg-gradient-to-t from-gray-400 to-gray-50
+    @apply bg-gradient-to-t from-green-400 to-yellow-100
 }
 
 .normal {
@@ -76,9 +76,6 @@ body {
     @apply bg-gradient-to-t from-blue-300 to-blue-50
 }
 
-.flying {
-    @apply bg-gradient-to-t from-gray-400 to-gray-50
-}
 
 .rock {
     @apply bg-gradient-to-t from-gray-400 to-gray-50

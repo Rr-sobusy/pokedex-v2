@@ -9,10 +9,12 @@ import { usePokemon } from "@/hooks/usePokemon";
 //* contexts
 import { searchPokemon } from "@/contexts/pokemon-search";
 import { pokemonGeneration } from "@/contexts/pokemons-gen";
+import { pokemonDialog } from "@/contexts/pokemon-stats-dialog";
 
 const CardContainer = () => {
   const { selectedGeneration } = pokemonGeneration();
   const { pokemonName: searchedPokemon } = searchPokemon();
+  const { onOpen, setPokemonId } = pokemonDialog();
 
   //* Custom pokemon hook
   const [pokemon, isLoading] = usePokemon({ generation: selectedGeneration });
@@ -21,6 +23,13 @@ const CardContainer = () => {
   const filterSearchedPokemon = pokemon?.filter(({ pokemonName }) =>
     pokemonName.toLowerCase().includes(searchedPokemon.toLowerCase())
   );
+
+  //* Dialog toggler
+  function cardClickHandler(e: number) {
+    onOpen();
+    setPokemonId(e);
+  }
+
   return (
     <>
       {isLoading ? (
@@ -29,10 +38,9 @@ const CardContainer = () => {
         <main className="lg:max-w-[1200px] py-10 max-w-full px-[2rem] lg:mx-auto min-h-screen grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4">
           {filterSearchedPokemon?.map((pokemon) => (
             <PokeCard
-              pokemonId={pokemon.pokemonId}
-              pokemonName={pokemon.pokemonName}
+              onClick={cardClickHandler}
               key={pokemon.pokemonId}
-              type={pokemon.type}
+              content={pokemon}
             />
           ))}
         </main>
