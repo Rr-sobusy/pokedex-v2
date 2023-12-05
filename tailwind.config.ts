@@ -11,6 +11,7 @@ const config: Config = {
     "./node_modules/@nextui-org/theme/dist/components/card.js",
     "./node_modules/@nextui-org/theme/dist/components/popover.js",
     "./node_modules/@nextui-org/theme/dist/components/modal.js",
+    "./node_modules/@nextui-org/theme/dist/components/tabs.js",
   ],
   theme: {
     extend: {

@@ -10,7 +10,7 @@ type ContextType = {
 };
 
 export const pokemonDialog = create<ContextType>((set) => ({
-  pokemonId: 0,
+  pokemonId: 1,
   setPokemonId: (id:number)=>set({pokemonId: id}),
   isOpen: false,
   onOpen: () => set({ isOpen: true }),
