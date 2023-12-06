@@ -26,7 +26,6 @@ import { pokemonDialog } from "@/contexts/pokemon-stats-dialog";
 const imgSrc =
   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny";
 
-
 const PokemonDialog = () => {
   const { isOpen, onOpenChange, pokemonId } = pokemonDialog();
 
@@ -38,15 +37,15 @@ const PokemonDialog = () => {
   const pokemonAbilities: [] = pokemon?.abilities.map(
     ({ ability }: { ability: { name: string } }) => ability.name
   );
-  const pokemonStats: [{ base_stat: number; stat_name: string }] = pokemon?.stats.map(
-    ({ base_stat, stat }: { base_stat: number; stat: { name: string } }) => {
-      return {
-        base_stat: base_stat,
-        stat_name: stat.name,
-      };
-    }
-  );
-  console.log(pokemonStats);
+  const pokemonStats: [{ base_stat: number; stat_name: string }] =
+    pokemon?.stats.map(
+      ({ base_stat, stat }: { base_stat: number; stat: { name: string } }) => {
+        return {
+          base_stat: base_stat,
+          stat_name: stat.name,
+        };
+      }
+    );
 
   return (
     <Modal
@@ -98,58 +97,65 @@ const PokemonDialog = () => {
                   <Card isBlurred>
                     <CardBody className="flex flex-col gap-3">
                       <div className="flex flex-row items-center">
-                        <p className="basis-[25%] tracking-wider text-[12px] font-bold text-slate-700">
+                        <p className="basis-[25%] tracking-widest text-[11px] font-semibold text-slate-500">
                           Height
                         </p>
-                        <p className="basis-[75%] font-sans font-semibold text-[12px] text-slate-600">
+                        <p className="basis-[75%] tracking-wider font-semibold text-[13px] text-slate-700">
                           {`${pokemon && pokemon.height / 10} m`}
                         </p>
                       </div>
                       <div className="flex flex-row items-center">
-                        <p className="basis-[25%]  text-[12px] tracking-wider font-bold text-slate-700">
+                        <p className="basis-[25%] tracking-widest text-[11px] font-semibold text-slate-500">
                           Weight
                         </p>
-                        <p className="basis-[75%] font-sans font-semibold text-[12px] text-slate-600">
+                        <p className="basis-[75%] tracking-wider font-semibold text-[13px] text-slate-700">
                           {`${pokemon && pokemon.weight / 10} kg`}
                         </p>
                       </div>
                       <div className="flex flex-row items-center">
-                        <p className="basis-[25%]  text-[12px] tracking-wider font-bold text-slate-700">
+                        <p className="basis-[25%] tracking-widest text-[11px] font-semibold text-slate-500">
                           Abilities
                         </p>
-                        <p className="basis-[75%] font-sans font-semibold text-[12px] capitalize text-slate-600">
+                        <p className="basis-[75%] tracking-wider font-semibold text-[13px] capitalize text-slate-700">
                           {pokemon && pokemonAbilities.join(", ")}
                         </p>
                       </div>
                       <div className="flex flex-row items-center">
-                        <p className="basis-[25%]  text-[12px] tracking-wider font-bold text-slate-700">
+                        <p className="basis-[25%] tracking-widest text-[11px] font-semibold text-slate-500">
                           Types
                         </p>
-                        <p className="basis-[75%] font-sans font-semibold text-[12px] capitalize text-slate-600">
+                        <p className="basis-[75%] tracking-wider font-semibold text-[13px] capitalize text-slate-700">
                           {pokemonType && pokemonType.join(", ")}
                         </p>
                       </div>
                     </CardBody>
                   </Card>
                 </Tab>
-                <Tab title="Base stats">
-                  <Card className=" max-h-auto lg:max-h-[127px]">
-
+                <Tab title="Stats">
+                  <Card className=" max-h-auto lg:max-h-[130px]">
                     <CardBody className="flex flex-col gap-2">
-                      {pokemonStats?.map((pokemon, key) => (
-                        <div key={key} className="flex flex-row items-center">
-                          <p className="basis-[35%] capitalize tracking-wider text-[12px] font-bold text-slate-700">
-                            {pokemon&&pokemon.stat_name}
+                      {pokemonStats?.map((pokemon, index) => (
+                        <div
+                          key={index}
+                          className="flex flex-row items-center"
+                        >
+                          <p className="basis-[35%] tracking-widest text-[11px] font-semibold text-slate-500 capitalize">
+                            {pokemon && pokemon.stat_name}
                           </p>
-                          <p className="basis-[15%] font-sans font-semibold text-[12px] text-slate-600">
-                          {pokemon&&pokemon.base_stat}
+                          <p className="basis-[15%] tracking-wider font-semibold text-[13px] text-slate-700">
+                            {pokemon && pokemon.base_stat}
                           </p>
-                          <Progress size="sm" color={pokemon.base_stat < 50 ? 'danger' : 'success'} value={pokemon&&pokemon.base_stat} className="basis-[50%]" />
+                          <Progress
+                            size="sm"
+                            color={
+                              pokemon.base_stat < 50 ? "danger" : "success"
+                            }
+                            value={pokemon && pokemon.base_stat}
+                            className="basis-[50%]"
+                          />
                         </div>
                       ))}
                     </CardBody>
-
-                    
                   </Card>
                 </Tab>
                 <Tab title="2">This is tabe 2</Tab>
