@@ -76,9 +76,9 @@ const PokemonDialog = () => {
             </ModalHeader>
             <ModalBody className="lg:min-h-[400px] min-h-[550px]">
               <Image
-                width={800}
-                height={800}
-                className={`w-full shadow-md max-h-[260px] ${
+                width={500}
+                height={500}
+                className={`w-full shadow-md max-h-[240px] ${
                   pokemonType && pokemonType.join(" ")
                 } rounded-lg h-[320px] py-[3.5rem] px-[5.5rem]`}
                 alt=""
@@ -88,7 +88,7 @@ const PokemonDialog = () => {
                 className="mt-2"
                 classNames={{
                   tabContent:
-                    "group-data-[selected=true]:font-bold group-data-[selected=true]:text-slate-600 text-gray-400 text-sm font-bold",
+                    "group-data-[selected=true]:font-bold group-data-[selected=true]:text-slate-700 text-gray-500 text-sm font-bold",
                 }}
                 color="default"
                 variant="solid"
@@ -158,7 +158,7 @@ const PokemonDialog = () => {
                     </CardBody>
                   </Card>
                 </Tab>
-                <Tab title="2">This is tabe 2</Tab>
+                <Tab title="Evolution">This is tabe 2</Tab>
                 <Tab title="3">rex</Tab>
                 <Tab>rex</Tab>
               </Tabs>
