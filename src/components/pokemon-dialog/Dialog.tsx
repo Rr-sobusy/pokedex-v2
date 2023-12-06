@@ -132,13 +132,10 @@ const PokemonDialog = () => {
                   </Card>
                 </Tab>
                 <Tab title="Stats">
-                  <Card className=" max-h-auto lg:max-h-[130px]">
+                  <Card className=" max-h-auto lg:max-h-[137px]">
                     <CardBody className="flex flex-col gap-2">
                       {pokemonStats?.map((pokemon, index) => (
-                        <div
-                          key={index}
-                          className="flex flex-row items-center"
-                        >
+                        <div key={index} className="flex flex-row items-center">
                           <p className="basis-[35%] tracking-widest text-[11px] font-semibold text-slate-500 capitalize">
                             {pokemon && pokemon.stat_name}
                           </p>
@@ -158,7 +155,11 @@ const PokemonDialog = () => {
                     </CardBody>
                   </Card>
                 </Tab>
-                <Tab title="Evolution">This is tabe 2</Tab>
+                <Tab title="Evolution">
+                  <Card className="lg:min-h-[137px]">
+                    <CardBody>Rex</CardBody>
+                  </Card>
+                </Tab>
                 <Tab title="3">rex</Tab>
                 <Tab>rex</Tab>
               </Tabs>
