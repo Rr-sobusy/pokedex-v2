@@ -1,4 +1,6 @@
 import React from "react";
+
+//* Component library
 import {
   Modal,
   ModalContent,
@@ -15,7 +17,6 @@ import Image from "next/image";
 //*utils
 import { formatToThree } from "@/helpers/format-to-three";
 
-import { useQuery } from "@tanstack/react-query";
 //* hook
 import { useSelectedPokemon } from "@/hooks/useSelectedPokemon";
 
@@ -25,9 +26,8 @@ import { pokemonDialog } from "@/contexts/pokemon-stats-dialog";
 const imgSrc =
   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny";
 
-type Props = {};
 
-const PokemonDialog = (props: Props) => {
+const PokemonDialog = () => {
   const { isOpen, onOpenChange, pokemonId } = pokemonDialog();
 
   const [pokemon, isLoading] = useSelectedPokemon({ pokemonId: pokemonId });
@@ -79,7 +79,7 @@ const PokemonDialog = (props: Props) => {
               <Image
                 width={800}
                 height={800}
-                className={`w-full max-h-[260px] ${
+                className={`w-full shadow-md max-h-[260px] ${
                   pokemonType && pokemonType.join(" ")
                 } rounded-lg h-[320px] py-[3.5rem] px-[5.5rem]`}
                 alt=""
@@ -133,8 +133,9 @@ const PokemonDialog = (props: Props) => {
                   </Card>
                 </Tab>
                 <Tab title="Base stats">
-                  <Card>
-                    <CardBody className="flex flex-col gap-1">
+                  <Card className=" max-h-auto lg:max-h-[127px]">
+
+                    <CardBody className="flex flex-col gap-2">
                       {pokemonStats?.map((pokemon, key) => (
                         <div key={key} className="flex flex-row items-center">
                           <p className="basis-[35%] capitalize tracking-wider text-[12px] font-bold text-slate-700">
@@ -143,10 +144,12 @@ const PokemonDialog = (props: Props) => {
                           <p className="basis-[15%] font-sans font-semibold text-[12px] text-slate-600">
                           {pokemon&&pokemon.base_stat}
                           </p>
-                          <Progress color={pokemon.base_stat < 50 ? 'danger' : 'success'} value={pokemon&&pokemon.base_stat} className="basis-[50%]" />
+                          <Progress size="sm" color={pokemon.base_stat < 50 ? 'danger' : 'success'} value={pokemon&&pokemon.base_stat} className="basis-[50%]" />
                         </div>
                       ))}
                     </CardBody>
+
+                    
                   </Card>
                 </Tab>
                 <Tab title="2">This is tabe 2</Tab>

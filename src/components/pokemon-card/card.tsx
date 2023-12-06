@@ -37,8 +37,8 @@ const PokeCard = ({ content,onClick}: PokemonCardType) => {
         </h5>
 
         <div className="flex justify-center w-full gap-1 mb-2">
-          {content.type.map((pokemonType) => (
-            <h6 className="px-3 py-1 text-[13px] font-semibold text-slate-700 font-sans h-full bg-gray-400 rounded-xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border-gray-100">
+          {content.type.map((pokemonType, index) => (
+            <h6 key={index} className="px-3 py-1 text-[13px] font-semibold text-slate-700 font-sans h-full bg-gray-400 rounded-xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border-gray-100">
               {pokemonType.toString()}
             </h6>
           ))}
