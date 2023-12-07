@@ -19,6 +19,7 @@ import { formatToThree } from "@/helpers/format-to-three";
 
 //* hook
 import { useSelectedPokemon } from "@/hooks/useSelectedPokemon";
+import { usePokemonEvolution } from "@/hooks/usePokemonEvolution";
 
 //* Dialog context
 import { pokemonDialog } from "@/contexts/pokemon-stats-dialog";
@@ -30,6 +31,9 @@ const PokemonDialog = () => {
   const { isOpen, onOpenChange, pokemonId } = pokemonDialog();
 
   const [pokemon, isLoading] = useSelectedPokemon({ pokemonId: pokemonId });
+
+  const [poke] = usePokemonEvolution({pokemonId:pokemonId})
+  console.log(poke.data)
 
   const pokemonType: [] = pokemon?.types.map(
     ({ type }: { type: { name: string } }) => type.name
@@ -46,6 +50,7 @@ const PokemonDialog = () => {
         };
       }
     );
+
 
   return (
     <Modal
@@ -157,7 +162,9 @@ const PokemonDialog = () => {
                 </Tab>
                 <Tab title="Evolution">
                   <Card className="lg:min-h-[137px]">
-                    <CardBody>Rex</CardBody>
+                    <CardBody>
+                    
+                    </CardBody>
                   </Card>
                 </Tab>
                 <Tab title="3">rex</Tab>
