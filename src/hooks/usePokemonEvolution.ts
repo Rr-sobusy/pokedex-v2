@@ -15,15 +15,18 @@ export const usePokemonEvolution = ({pokemonId}:{pokemonId:number}) => {
         
         const chain = pokemonEvo.chain
 
-        if(chain.evolution_details.length > 0){
+        if(chain.evolves_to.length > 0){
             const pokemonEvo1 = {
-
+                pokemon : chain.species.name,
+                image: getPokemonImage(pokemonId)
             }
+            generatedArray.push(pokemonEvo1)
         }
+        return generatedArray
 
         
     }
-  });``
+  });
 
   return [pokemons]
 };

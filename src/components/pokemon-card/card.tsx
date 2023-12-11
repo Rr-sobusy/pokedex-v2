@@ -15,6 +15,7 @@ type PokemonCardType = {
 const PokeCard = ({ content,onClick}: PokemonCardType) => {
   return (
     <Card
+      aria-label="pokemon-card"
       isFooterBlurred
       className="max-h-[290px] hover:-translate-y-2 cursor-pointer"
     >
