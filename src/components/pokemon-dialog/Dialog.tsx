@@ -16,6 +16,7 @@ import Image from "next/image";
 
 //*utils
 import { formatToThree } from "@/helpers/format-to-three";
+import { getSumArr } from "@/helpers/get-sum-arr";
 
 //* hook
 import { useSelectedPokemon } from "@/hooks/useSelectedPokemon";
@@ -32,8 +33,8 @@ const PokemonDialog = () => {
 
   const [pokemon, isLoading] = useSelectedPokemon({ pokemonId: pokemonId });
 
-  const [poke] = usePokemonEvolution({pokemonId:pokemonId})
-  console.log(poke.data)
+  const [poke] = usePokemonEvolution({ pokemonId: pokemonId });
+  console.log(poke.data);
 
   const pokemonType: [] = pokemon?.types.map(
     ({ type }: { type: { name: string } }) => type.name
@@ -51,14 +52,13 @@ const PokemonDialog = () => {
       }
     );
 
-
   return (
     <Modal
       hideCloseButton
       backdrop="blur"
       isOpen={isOpen}
       onOpenChange={onOpenChange}
-      isDismissable={false}
+      isDismissable={true}
     >
       <ModalContent>
         {(onClose) => (
@@ -83,7 +83,7 @@ const PokemonDialog = () => {
               <Image
                 width={500}
                 height={500}
-                className={`w-full shadow-md max-h-[240px] ${
+                className={`w-full shadow-md max-h-[260px] ${
                   pokemonType && pokemonType.join(" ")
                 } rounded-lg h-[320px] py-[3.5rem] px-[5.5rem]`}
                 alt=""
@@ -157,18 +157,38 @@ const PokemonDialog = () => {
                           />
                         </div>
                       ))}
+                      <div className="flex flex-row items-center">
+                        <p className="basis-[35%] tracking-widest text-[11px] font-semibold text-slate-500 capitalize">
+                          Total
+                        </p>
+                        <p className="basis-[15%] tracking-wider font-semibold text-[13px] text-slate-700">
+                          {getSumArr(
+                            pokemonStats &&
+                              pokemonStats.map((pokemon) => pokemon.base_stat)
+                          )}
+                        </p>
+                        <Progress
+                          color={`${getSumArr(
+                            pokemonStats &&
+                              pokemonStats.map((pokemon) => pokemon.base_stat)
+                          ) > 300 ? 'success':'danger'}`}
+                          size="sm"
+                          maxValue={600}
+                          value= {getSumArr(
+                            pokemonStats &&
+                              pokemonStats.map((pokemon) => pokemon.base_stat)
+                          )}
+                          className="basis-[50%]"
+                        />
+                      </div>
                     </CardBody>
                   </Card>
                 </Tab>
                 <Tab title="Evolution">
                   <Card className="lg:min-h-[137px]">
-                    <CardBody>
-                    
-                    </CardBody>
+                    <CardBody></CardBody>
                   </Card>
                 </Tab>
-                <Tab title="3">rex</Tab>
-                <Tab>rex</Tab>
               </Tabs>
             </ModalBody>
             <ModalFooter></ModalFooter>

@@ -64,7 +64,7 @@ const Header = () => {
               </button>
             </PopoverTrigger>
             <PopoverContent>
-              <div className="px-7 py-3 bg-[var(--bg-main)] rounded-lg">
+              <div className="px-4 py-3 rounded-lg">
                 <h1 className="text-small font-bold mb-3">Select Generation</h1>
                 <ul className="grid grid-cols-3 gap-2">
                   {GenerationList.map((generation) => (
