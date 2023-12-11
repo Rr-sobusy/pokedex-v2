@@ -168,13 +168,17 @@ const PokemonDialog = () => {
                           )}
                         </p>
                         <Progress
-                          color={`${getSumArr(
-                            pokemonStats &&
-                              pokemonStats.map((pokemon) => pokemon.base_stat)
-                          ) > 300 ? 'success':'danger'}`}
+                          color={`${
+                            getSumArr(
+                              pokemonStats &&
+                                pokemonStats.map((pokemon) => pokemon.base_stat)
+                            ) > 300
+                              ? "success"
+                              : "danger"
+                          }`}
                           size="sm"
                           maxValue={600}
-                          value= {getSumArr(
+                          value={getSumArr(
                             pokemonStats &&
                               pokemonStats.map((pokemon) => pokemon.base_stat)
                           )}
