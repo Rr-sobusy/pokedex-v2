@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { usePokemon } from "./usePokemon";
 import { getPokemonImage } from "@/helpers/get-pokemonEvo-image";
 
 
@@ -17,12 +16,34 @@ export const usePokemonEvolution = ({pokemonId}:{pokemonId:number}) => {
 
         if(chain.evolves_to.length > 0){
             const pokemonEvo1 = {
-                pokemon : chain.species.name,
-                image: getPokemonImage(pokemonId)
+                name : chain.species.name,
+                image: await getPokemonImage(pokemonId)
             }
-            generatedArray.push(pokemonEvo1)
+
+            const pokemonEvo2 = {
+                name: chain.evolves_to[0].species.name,
+                image: await getPokemonImage(chain.evolves_to[0].species.name)
+            }
+
+            generatedArray.push({
+              pokemons: [pokemonEvo1,pokemonEvo2],
+              minLevel : chain.evolves_to[0].evolution_details[0].min_level
+            })
+
+            if(chain.evolves_to[0].evolves_to.length > 0){
+                const pokemonEvo3 = {
+                    name: chain.evolves_to[0].evolves_to[0].species.name,
+                    image : await getPokemonImage(chain.evolves_to[0].evolves_to[0].species.name)
+                }
+
+                generatedArray.push({
+                  pokemons: [pokemonEvo2, pokemonEvo3],
+                  minLevel : chain.evolves_to[0].evolves_to[0].evolution_details[0].min_level
+                })
+            }          
         }
         return generatedArray
+       
 
         
     }
