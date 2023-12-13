@@ -192,9 +192,8 @@ const PokemonDialog = () => {
                   <Card className="lg:min-h-[137px]">
                     <CardBody className=" grid gap-1">
                       {poke?.length > 0 ? (
-                        poke.map(({ pokemons, minLevel }) => (
-                          <div>
-                            <div className="grid grid-cols-3 items-center justify-center">
+                        poke.map(({ pokemons, minLevel }, index) => (
+                            <div key={index} className="grid grid-cols-3 items-center justify-center">
                               <div className="grid justify-center">
                                 <Image
                                   className="h-[40px] w-[60px]"
@@ -220,8 +219,7 @@ const PokemonDialog = () => {
                                   {pokemons[1].name}
                                 </p>
                               </div>
-                            </div>
-                          </div>
+                            </div>          
                         ))
                       ) : (
                         <p className="grid items-center justify-center text-slate-700 uppercase font-semibold">This pokemon does not evolve.</p>
