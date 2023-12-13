@@ -5,5 +5,7 @@
   <br />
 </h1>
 
+![screenshot](public/snapshot.png)
+
 ## Live Demo
 Take a look the live demo here 👉 [https://pokedex-v2-chi.vercel.app](https://pokedex-v2-chi.vercel.app)
