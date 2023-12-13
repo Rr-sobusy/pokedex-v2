@@ -34,7 +34,7 @@ const PokemonDialog = () => {
   const [pokemon, isLoading] = useSelectedPokemon({ pokemonId: pokemonId });
 
   const [poke] = usePokemonEvolution({ pokemonId: pokemonId });
-  console.log(poke.data);
+  console.log(poke);
 
   const pokemonType: [] = pokemon?.types.map(
     ({ type }: { type: { name: string } }) => type.name
@@ -190,7 +190,43 @@ const PokemonDialog = () => {
                 </Tab>
                 <Tab title="Evolution">
                   <Card className="lg:min-h-[137px]">
-                    <CardBody></CardBody>
+                    <CardBody className=" grid gap-1">
+                      {poke?.length > 0 ? (
+                        poke.map(({ pokemons, minLevel }) => (
+                          <div>
+                            <div className="grid grid-cols-3 items-center justify-center">
+                              <div className="grid justify-center">
+                                <Image
+                                  className="h-[40px] w-[60px]"
+                                  height={800}
+                                  width={200}
+                                  alt=""
+                                  src={pokemons[0]?.image.pokemonImg}
+                                />
+                                <p className="font-sans tracking-wide text-slate-700 font-semibold capitalize text-sm">
+                                  {pokemons[0].name}
+                                </p>
+                              </div>
+                              <p className="font-sans text-sm font-semibold flex justify-center text-slate-600">{`Min Level : ${minLevel ?  minLevel : 0}`}</p>
+                              <div className="grid justify-center">
+                                <Image
+                                  className="h-[40px] w-[60px]"
+                                  height={800}
+                                  width={200}
+                                  alt=""
+                                  src={pokemons[1]?.image.pokemonImg}
+                                />
+                                <p className="font-sans tracking-wide text-slate-700 font-semibold capitalize text-sm">
+                                  {pokemons[1].name}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        <p className="grid items-center justify-center text-slate-700 uppercase font-semibold">This pokemon does not evolve.</p>
+                      )}
+                    </CardBody>
                   </Card>
                 </Tab>
               </Tabs>
