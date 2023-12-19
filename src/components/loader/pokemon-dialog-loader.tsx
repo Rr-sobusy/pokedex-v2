@@ -6,7 +6,7 @@ type Props = {};
 
 const PokemonDialogLoader = (props: Props) => {
   return (
-    <Card className="w-full min-h-[580px] space-y-5 p-4" radius="lg">
+    <Card className="w-full min-h-[500px] space-y-5 p-4" radius="lg">
       <Skeleton className="rounded-lg">
         <div className="h-[200px] rounded-lg bg-default-300"></div>
       </Skeleton>
