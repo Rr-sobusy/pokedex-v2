@@ -13,6 +13,7 @@ const config: Config = {
     "./node_modules/@nextui-org/theme/dist/components/modal.js",
     "./node_modules/@nextui-org/theme/dist/components/tabs.js",
     "./node_modules/@nextui-org/theme/dist/components/progress.js",
+    "./node_modules/@nextui-org/theme/dist/components/skeleton.js",
   ],
   theme: {
     extend: {
